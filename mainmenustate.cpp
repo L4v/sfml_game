@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "mainmenustate.hpp"
+#include "gamestate.hpp"
 #include "DEFINITIONS.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) : _data(data){}
@@ -9,7 +10,7 @@ MainMenuState::MainMenuState(GameDataRef data) : _data(data){}
 void MainMenuState::init(){
     // Loading the assets
     this->_data->assets.loadTexture("Background", MAIN_MENU_BACKGROUND_FILEPATH);
-    this->_data->assets.loadTexture("Game Title", MAIN_MENU_TITLE_PATH);
+    this->_data->assets.loadTexture("Game Title", MAIN_MENU_TITLE_FILEPATH);
     this->_data->assets.loadTexture("Play Button", MAIN_MENU_PLAY_BUTTON);
 
     // Setting the textures
@@ -41,7 +42,7 @@ void MainMenuState::handleInput(){
         if(this->_data->input.isSpriteClicked(this->_playButton,
             sf::Mouse::Left, this->_data->window))
             // TODO : switch to Game Screen
-            std::cout << "Go to Game Screen" << std::endl;
+            this->_data->machine.addState(StateRef(new GameState(_data)), true);
 
     }
 }
