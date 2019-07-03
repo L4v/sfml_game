@@ -1,6 +1,7 @@
 #include "entity.hpp"
 
-Entity::Entity()
+Entity::Entity(int hp, float movementSpeed, const sf::RectangleShape& box) :
+    _hp(hp), _movementSpeed(movementSpeed), _box(box)
 {
     this->_isAlive = true;
     this->_movementSpeed = 500.f;

@@ -5,6 +5,9 @@
 
 #define GAME_TITLE "SFML Game"
 
+#define DEFAULT_ENTITY_WIDTH 50
+#define DEFAULT_ENTITY_HEIGHT 37
+
 #define SPLASH_STATE_SHOW_TIME 3
 
 #define SPLASH_SCENE_BACKGROUND_FILEPATH "_assets/_screens/sfml_splash_screen.png"
