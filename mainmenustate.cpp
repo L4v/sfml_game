@@ -60,3 +60,5 @@ void MainMenuState::draw(float dt){
 
     this->_data->window.display();
 }
+
+void MainMenuState::initKeybinds(){}

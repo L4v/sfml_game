@@ -16,3 +16,13 @@ bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button,
 sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& window){
     return sf::Mouse::getPosition(window);
 }
+
+void InputManager::initKeys(){
+    this->supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
+    this->supportedKeys.emplace("A", sf::Keyboard::Key::A);
+    this->supportedKeys.emplace("D", sf::Keyboard::Key::D);
+    this->supportedKeys.emplace("S", sf::Keyboard::Key::S);
+    this->supportedKeys.emplace("W", sf::Keyboard::Key::W);
+}
+
+std::map<std::string, int>& InputManager::getKeys() { return this->supportedKeys; }

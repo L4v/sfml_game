@@ -21,4 +21,6 @@ private:
     sf::Sprite _background;
     sf::Sprite _playButton;
     sf::Sprite _title;
+
+    void initKeybinds();
 };

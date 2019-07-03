@@ -4,6 +4,7 @@
 
 #include "state.hpp"
 #include "game.hpp"
+#include "entity.hpp"
 
 class GameState : public State{
 public:
@@ -18,7 +19,11 @@ public:
 private:
     GameDataRef _data;
 
+    Entity player;
+
     sf::Sprite _background;
     sf::Sprite _pauseButton;
     int gameState;
+
+    void initKeybinds();
 };

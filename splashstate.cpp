@@ -35,3 +35,5 @@ void SplashState::draw(float dt){
     this->_data->window.draw(this->_background);
     this->_data->window.display();
 }
+
+void SplashState::initKeybinds(){}

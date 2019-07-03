@@ -21,4 +21,6 @@ private:
     sf::Clock _clock;
     sf::Sprite _background;
 
+    void initKeybinds();
+
 };

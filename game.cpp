@@ -1,11 +1,14 @@
 #include "game.hpp"
 #include "splashstate.hpp"
+#include <iostream>
 
 Game::Game(int width, int height, std::string title){
+    this->_data->input.initKeys();
     _data->window.create(sf::VideoMode(width, height), title,
                         sf::Style::Close | sf::Style::Titlebar);
     _data->machine.addState(StateRef(new SplashState(this->_data)));
-    
+
+
     this->run();
 }
 
@@ -19,17 +22,19 @@ void Game::run(){
         newTime = this->_clock.getElapsedTime().asSeconds();
         frameTime = newTime - currentTime;
 
-        if(frameTime > 0.25f)
-            frameTime = 0.25f;
+        if(frameTime > 0.25f) frameTime = 0.25f;
 
         currentTime = newTime;
         accumulator += frameTime;
+        std::cout << frameTime << std::endl;
 
-        while(accumulator >= dt){
+
+        while(accumulator > dt){
             this->_data->machine.getActiveState()->handleInput();
             this->_data->machine.getActiveState()->update(dt);
 
             accumulator -= dt;
+            if(accumulator < 0) accumulator = 0;
         }
 
         interpolation = accumulator / dt;

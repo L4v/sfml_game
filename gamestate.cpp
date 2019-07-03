@@ -9,6 +9,8 @@ GameState::GameState(GameDataRef data) : _data(data){}
 void GameState::init(){
     gameState = STATE_PLAYING;
 
+    this->_supportedKeys = this->_data->input.getKeys();
+
     // Loading the assets
     this->_data->assets.loadTexture("Pause Button", PAUSE_BUTTON);
 
@@ -22,6 +24,13 @@ void GameState::init(){
         - _pauseButton.getLocalBounds().width, _pauseButton.getPosition().y);
 
 
+}
+
+void GameState::initKeybinds(){
+    this->keybinds.emplace("MOVE_LEFT", this->_supportedKeys.at("A"));
+    this->keybinds.emplace("MOVE_RIGHT", this->_supportedKeys.at("D"));
+    this->keybinds.emplace("MOVE_DOWN", this->_supportedKeys.at("S"));
+    this->keybinds.emplace("MOVE_UP", this->_supportedKeys.at("W"));
 }
 
 void GameState::handleInput(){
@@ -39,10 +48,14 @@ void GameState::handleInput(){
             std::cout << "Pause the game" << std::endl;
 
     }
+
+    // TODO : IMPLEMENT KEYBOARD EVENT THROUGH KEYBIND
+    //https://www.youtube.com/watch?v=se3nCCxH2Aw&list=PL6xSOsbVA1ebkU66okpi-KViAO8_9DJKg&index=9
+
 }
 
 void GameState::update(float dt){
-
+    this->player.update(dt);
 }
 
 void GameState::draw(float dt){
@@ -50,6 +63,7 @@ void GameState::draw(float dt){
 
     this->_data->window.draw(this->_background);
     this->_data->window.draw(this->_pauseButton);
+    this->player.draw(this->_data->window);
 
     this->_data->window.display();
 }

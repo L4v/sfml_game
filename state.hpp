@@ -1,5 +1,7 @@
 #pragma once
 
+#include <map>
+
 class State{
 public:
     virtual void init() = 0;
@@ -11,5 +13,11 @@ public:
 
     virtual void pause() {};
     virtual void resume() {};
+
+protected:
+    std::map<std::string, int> _supportedKeys;
+    std::map<std::string, int> keybinds;
+
+    virtual void initKeybinds() = 0;
 
 };
