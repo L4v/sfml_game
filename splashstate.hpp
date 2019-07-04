@@ -11,7 +11,7 @@ public:
 
     void init();
 
-    void handleInput();
+    void handleInput(float dt);
     void update(float dt);
     void draw(float dt);
 

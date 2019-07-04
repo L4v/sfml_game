@@ -14,7 +14,7 @@ void SplashState::init(){
             this->_data->assets.getTexture("Splash State Background"));
 }
 
-void SplashState::handleInput(){
+void SplashState::handleInput(float dt){
     sf::Event event;
 
     while(this->_data->window.pollEvent(event)){

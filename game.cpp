@@ -30,7 +30,7 @@ void Game::run(){
 
 
         while(accumulator > dt){
-            this->_data->machine.getActiveState()->handleInput();
+            this->_data->machine.getActiveState()->handleInput(dt);
             this->_data->machine.getActiveState()->update(dt);
 
             accumulator -= dt;

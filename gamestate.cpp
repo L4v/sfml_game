@@ -10,9 +10,11 @@ void GameState::init(){
     gameState = STATE_PLAYING;
 
     this->_supportedKeys = this->_data->input.getKeys();
+    this->initKeybinds();
 
     // Loading the assets
     this->_data->assets.loadTexture("Pause Button", PAUSE_BUTTON);
+
 
     // Setting the textures
     // Reusing the background
@@ -33,7 +35,7 @@ void GameState::initKeybinds(){
     this->keybinds.emplace("MOVE_UP", this->_supportedKeys.at("W"));
 }
 
-void GameState::handleInput(){
+void GameState::handleInput(float dt){
     sf::Event event;
 
     // Check for events
@@ -46,6 +48,7 @@ void GameState::handleInput(){
         if(this->_data->input.isSpriteClicked(this->_pauseButton,
                 sf::Mouse::Left, this->_data->window))
             std::cout << "Pause the game" << std::endl;
+
 
     }
 

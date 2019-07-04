@@ -29,7 +29,7 @@ void MainMenuState::init(){
         this->_title.getGlobalBounds().height * 0.1);
 }
 
-void MainMenuState::handleInput(){
+void MainMenuState::handleInput(float dt){
     sf::Event event;
 
     // Check for events

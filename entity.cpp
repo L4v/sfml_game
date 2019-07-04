@@ -18,8 +18,8 @@ void Entity::move(float& dt, float x_offset, float y_offset){
 }
 
 void Entity::update(float& dt){
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        this->move(dt, -1.f, 0.f);
+    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        this->move(dt, -1.f, 0.f);*/
 }
 
 void Entity::draw(sf::RenderTarget& target){
