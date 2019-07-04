@@ -18,11 +18,17 @@ sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& window){
 }
 
 void InputManager::initKeys(){
-    this->supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
-    this->supportedKeys.emplace("A", sf::Keyboard::Key::A);
-    this->supportedKeys.emplace("D", sf::Keyboard::Key::D);
-    this->supportedKeys.emplace("S", sf::Keyboard::Key::S);
-    this->supportedKeys.emplace("W", sf::Keyboard::Key::W);
+    std::ifstream ifs("_config/supported_keys.ini");
+
+    if(ifs.is_open()){
+        std::string key = "";
+        int key_value = 0;
+
+        while(ifs >> key >> key_value)
+            this->_supportedKeys[key] = key_value;
+    }
+
+    ifs.close();
 }
 
-std::map<std::string, int>& InputManager::getKeys() { return this->supportedKeys; }
+std::map<std::string, int>& InputManager::getKeys() { return this->_supportedKeys; }

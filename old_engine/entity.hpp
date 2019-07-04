@@ -22,10 +22,7 @@ public:
 
 protected:
     bool _isAlive;
-
     int _hp;
-
     float _movementSpeed;
-
     sf::RectangleShape _box;
 };

@@ -1,23 +1,26 @@
 #pragma once
 
-#include <map>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 class State{
+private:
+    std::vector<sf::Texture*> textures;
+
+
 public:
-    virtual void init() = 0;
+    State();
+    virtual ~State();
 
-    virtual void handleInput(float dt) = 0;
-    virtual void update(float dt) = 0;
-
-    virtual void draw(float dt) = 0;
-
-    virtual void pause() {};
-    virtual void resume() {};
-
-protected:
-    std::map<std::string, int> _supportedKeys;
-    std::map<std::string, int> keybinds;
-
-    virtual void initKeybinds() = 0;
-
+    virtual void update() = 0;
+    virtual void render() = 0;
 };

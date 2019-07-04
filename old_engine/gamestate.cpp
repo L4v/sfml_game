@@ -29,13 +29,39 @@ void GameState::init(){
 }
 
 void GameState::initKeybinds(){
-    this->keybinds.emplace("MOVE_LEFT", this->_supportedKeys.at("A"));
-    this->keybinds.emplace("MOVE_RIGHT", this->_supportedKeys.at("D"));
-    this->keybinds.emplace("MOVE_DOWN", this->_supportedKeys.at("S"));
-    this->keybinds.emplace("MOVE_UP", this->_supportedKeys.at("W"));
+    /*this->keybinds["QUIT"] = this->_supportedKeys.at("Escape");
+    this->keybinds["MOVE_LEFT"] = this->_supportedKeys.at("A");
+    this->keybinds["MOVE_RIGHT"] = this->_supportedKeys.at("D");
+    this->keybinds["MOVE_DOWN"] = this->_supportedKeys.at("S");
+    this->keybinds["MOVE_UP"] = this->_supportedKeys.at("W");*/
+
+    std::ifstream ifs("_config/gamestate_keybinds.ini");
+
+    if(ifs.is_open()){
+        std::string key = "";
+        std::string key2 = "";
+
+        while(ifs >> key >> key2)
+            this->_keybinds[key] = this->_supportedKeys.at(key2);
+    }
+
+    ifs.close();
+
 }
 
 void GameState::handleInput(float dt){
+
+    // Player movement
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->_keybinds.at("MOVE_LEFT"))))
+        this->player.move(dt, -1.f, 0.f);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->_keybinds.at("MOVE_RIGHT"))))
+        this->player.move(dt, 1.f, 0.f);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->_keybinds.at("MOVE_DOWN"))))
+        this->player.move(dt, 0.f, 1.f);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->_keybinds.at("MOVE_UP"))))
+        this->player.move(dt, 0.f, -1.f);
+
+
     sf::Event event;
 
     // Check for events
@@ -44,6 +70,11 @@ void GameState::handleInput(float dt){
         if(sf::Event::Closed == event.type)
             this->_data->window.close();
 
+        if(event.type == sf::Event::KeyPressed){
+            if(event.key.code == sf::Keyboard::Key(this->_keybinds.at("QUIT")))
+                this->_data->window.close();
+        }
+
         // Check if pause button is clicked
         if(this->_data->input.isSpriteClicked(this->_pauseButton,
                 sf::Mouse::Left, this->_data->window))
@@ -51,10 +82,6 @@ void GameState::handleInput(float dt){
 
 
     }
-
-    // TODO : IMPLEMENT KEYBOARD EVENT THROUGH KEYBIND
-    //https://www.youtube.com/watch?v=se3nCCxH2Aw&list=PL6xSOsbVA1ebkU66okpi-KViAO8_9DJKg&index=9
-
 }
 
 void GameState::update(float dt){

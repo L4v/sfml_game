@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <fstream>
 #include <map>
 
 class InputManager{
@@ -33,6 +34,6 @@ public:
     std::map<std::string, int>& getKeys();
 
 private:
-    std::map<std::string, int> supportedKeys;
+    std::map<std::string, int> _supportedKeys;
 
 };

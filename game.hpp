@@ -1,38 +1,48 @@
 #pragma once
 
-#include <memory>
-#include <string>
-#include <SFML/Graphics.hpp>
-#include "statemachine.hpp"
-#include "assetmanager.hpp"
-#include "inputmanager.hpp"
+#include "state.hpp"
 
-struct GameData{
-    StateMachine machine;
-    sf::RenderWindow window;
-    AssetManager assets;
-    InputManager input;
-};
-
-typedef std::shared_ptr<GameData> GameDataRef;
 
 class Game{
-public:
-    /*
-    * Constructor with paramaters
-    */
-    Game(int width, int height, std::string title);
-
 private:
-    // Framerate, 60 updates per second (FPS)
-    const float dt = 1.0f / 60.0f;
-    sf::Clock _clock;
+    sf::RenderWindow *window;
+    sf::Event sfEvent;
 
-    GameDataRef _data = std::make_shared<GameData>();
-
+    sf::Clock dtClock;
+    float dt;
 
     /*
-    * For starting the game
+    * Create a SFML window using a window.ini file
+    */
+    void initWindow();
+
+
+public:
+    Game();
+    virtual ~Game();
+
+    /*
+    * Updates the delta time (dt)
+    */
+    void updateDt();
+
+    /*
+    * For updating SFML events
+    */
+    void updateSFMLEvents();
+
+    /*
+    * For updates
+    */
+    void update();
+
+    /*
+    * Handling all the renders
+    */
+    void render();
+
+    /*
+    * The run loop
     */
     void run();
 };
