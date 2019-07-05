@@ -1,11 +1,15 @@
 #pragma once
 
 #include "gamestate.hpp"
+#include "button.hpp"
 
 class MainMenuState : public State{
 private:
     sf::RectangleShape background;
+    sf::Font font;
 
+    // Initializers
+    void initFonts();
     void initKeybinds();
 public:
     MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);

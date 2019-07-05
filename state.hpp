@@ -9,6 +9,9 @@ protected:
     std::map<std::string, int> keybinds;
     bool quit; // Whether to quit a state
 
+    sf::Vector2i mousePosScreen;
+    sf::Vector2i mousePosWindow;
+    sf::Vector2f mousePosView;
 
     std::vector<sf::Texture*> textures;
 
@@ -37,6 +40,10 @@ public:
     */
     virtual void endState() = 0;
 
+    /*
+    * Updates the mouse positions
+    */
+    virtual void updateMousePositions();
 
     /*
     * Updates the keybinds
