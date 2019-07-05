@@ -1,6 +1,6 @@
 #pragma once
 
-#include "state.hpp"
+#include "gamestate.hpp"
 
 
 class Game{
@@ -11,15 +11,32 @@ private:
     sf::Clock dtClock;
     float dt;
 
+    std::stack<State*> states;
+    std::map<std::string, int> supportedKeys;
+
     /*
     * Create a SFML window using a window.ini file
     */
     void initWindow();
 
+    /*
+    * Initializes the states stack
+    */
+    void initStates();
+
+    /*
+    * Initializes the supported keys
+    */
+    void initKeys();
 
 public:
     Game();
     virtual ~Game();
+
+    /*
+    * Ends the application
+    */
+    void endApplication();
 
     /*
     * Updates the delta time (dt)
@@ -42,7 +59,7 @@ public:
     void render();
 
     /*
-    * The run loop
+    * The main run loop
     */
     void run();
 };
