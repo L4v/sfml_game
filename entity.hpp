@@ -15,8 +15,13 @@
 #include <map>
 
 class Entity{
+private:
+    // Initializers
+    void initVariables();
+
 protected:
-    sf::RectangleShape shape; // Placeholder
+    sf::Texture* texture;
+    sf::Sprite* sprite;
 
     float movementSpeed;
 
@@ -24,6 +29,10 @@ public:
     Entity();
     virtual ~Entity();
 
+    // Component functions
+    void createSprite(sf::Texture* texture);
+
+    virtual void setPosition(const float x, const float y);
     virtual void move(const float& dt, const float& x_dir, const float& y_dir);
 
     virtual void update(const float& dt);

@@ -49,6 +49,7 @@ void MainMenuState::initButtons(){
         &this->font, "New Game",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
         sf::Color(20, 20, 20, 255));
+
     this->buttons["SETTINGS"] = new Button(
         this->background.getSize().x / 10,
         this->buttons["GAME_STATE_BTN"]->getShape().getPosition().y
@@ -57,6 +58,7 @@ void MainMenuState::initButtons(){
         &this->font, "Settings",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
         sf::Color(20, 20, 20, 255));
+
     this->buttons["EXIT"] = new Button(
         this->background.getSize().x / 10,
         this->buttons["SETTINGS"]->getShape().getPosition().y
@@ -85,10 +87,6 @@ MainMenuState::~MainMenuState(){
 
 }
 
-void MainMenuState::endState(){
-    std::cout << "Ending main menu state" << std::endl;
-}
-
 void MainMenuState::updateButtons(){
     for(auto &it : this->buttons){
         it.second->update(this->mousePosView);
@@ -104,12 +102,11 @@ void MainMenuState::updateButtons(){
 
     // Quit
     if(this->buttons["EXIT"]->isPressed()){
-        this->quit = true;
+        this->endState();
     }
 }
 
 void MainMenuState::updateInput(const float& dt){
-    this->checkForQuit();
 }
 
 void MainMenuState::update(const float& dt){

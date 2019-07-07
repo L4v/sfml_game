@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.hpp"
+#include "player.hpp"
 
 class State{
 protected:
@@ -14,7 +14,7 @@ protected:
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosView;
 
-    std::vector<sf::Texture*> textures;
+    std::map<std::string, sf::Texture> textures;
 
     virtual void initKeybinds() = 0;
 
@@ -28,11 +28,6 @@ public:
     virtual ~State();
 
     /*
-    * Checks for quit signal
-    */
-    virtual void checkForQuit();
-
-    /*
     * Returns whether the state wishes to quit or not
     */
     const bool& getQuit() const;
@@ -40,7 +35,7 @@ public:
     /*
     * Performs tasks before ending the state
     */
-    virtual void endState() = 0;
+    virtual void endState();
 
     /*
     * Updates the mouse positions

@@ -22,7 +22,6 @@ public:
         std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~MainMenuState();
 
-    void endState();
     void updateButtons();
     void updateInput(const float& dt);
     void update(const float& dt);
