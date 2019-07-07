@@ -13,12 +13,12 @@ Button::Button(float x, float y, float width, float height,
     this->text.setFont(*this->font);
     this->text.setString(text);
     this->text.setFillColor(sf::Color::White);
-    this->text.setCharacterSize(12);
+    this->text.setCharacterSize(24);
     this->text.setPosition(
         this->shape.getPosition().x + this->shape.getGlobalBounds().width / 2.f
          - this->text.getGlobalBounds().width / 2.f,
         this->shape.getPosition().y + this->shape.getGlobalBounds().height / 2.f
-         - this->text.getGlobalBounds().height / 2.f
+         - this->text.getGlobalBounds().height * 3.f / 4.f
     );
 
     this->idleColor = idleColor;
@@ -29,6 +29,10 @@ Button::Button(float x, float y, float width, float height,
 }
 
 Button::~Button(){}
+
+sf::RectangleShape& Button::getShape(){
+    return this->shape;
+}
 
 const bool Button::isPressed() const{
     if(this->buttonState == 2)

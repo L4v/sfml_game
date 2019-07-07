@@ -1,5 +1,22 @@
 #include "mainmenustate.hpp"
 
+// Inits
+
+void MainMenuState::initVariables(){}
+
+void MainMenuState::initBackground(){
+    this->background.setSize(sf::Vector2f(
+        static_cast<float>(this->window->getSize().x),
+        static_cast<float>(this->window->getSize().y)));
+
+    // TODO : USE BETTER FILE LOADING (VARIABLES)
+    if(!this->backgroundTexture.loadFromFile(
+            "_assets/_backgrounds/mainmenustate_bg.png"))
+        throw "ERROR::MAIN_MENU_STATE::FAILED_TO_LOAD_BG_TEXTURE";
+
+    this->background.setTexture(&this->backgroundTexture);
+}
+
 void MainMenuState::initFonts(){
     if(!this->font.loadFromFile("_assets/_fonts/SHPinscher-Regular.otf"))
         std::cout << "Could not load font in main menu state" << std::endl;
@@ -7,7 +24,7 @@ void MainMenuState::initFonts(){
 
 void MainMenuState::initKeybinds(){
     // Fetches the adequate keybinds for the state
-    std::ifstream ifs("_config/gamestate_keybinds.ini");
+    std::ifstream ifs("_config/mainmenustate_keybinds.ini");
 
     if(ifs.is_open()){
         std::string key = "";
@@ -22,24 +39,44 @@ void MainMenuState::initKeybinds(){
 
 void MainMenuState::initButtons(){
 
-    this->buttons["GAME_STATE_BTN"] = new Button(100, 100, 150, 50,
+    // TODO : MAKE BETTER "WRAPPER" FOR BUTTONS (OR A MANAGER)
+
+    int margin = 20; // Temp margin for buttons
+
+    this->buttons["GAME_STATE_BTN"] = new Button(
+        this->background.getSize().x / 10, this->background.getSize().y * 5 / 8,
+        150, 50,
         &this->font, "New Game",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
         sf::Color(20, 20, 20, 255));
-    this->buttons["EXIT"] = new Button(100, 200, 150, 50,
+    this->buttons["SETTINGS"] = new Button(
+        this->background.getSize().x / 10,
+        this->buttons["GAME_STATE_BTN"]->getShape().getPosition().y
+            + this->buttons["GAME_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
+        150, 50,
+        &this->font, "Settings",
+        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
+        sf::Color(20, 20, 20, 255));
+    this->buttons["EXIT"] = new Button(
+        this->background.getSize().x / 10,
+        this->buttons["SETTINGS"]->getShape().getPosition().y
+            + this->buttons["SETTINGS"]->getShape().getSize().y + margin,//this->background.getSize().y / 2,
+        150, 50,
         &this->font, "Quit",
         sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
         sf::Color(20, 20, 20, 255));
 }
 
 MainMenuState::MainMenuState(sf::RenderWindow* window,
-    std::map<std::string, int>* supportedKeys) : State(window, supportedKeys){
+    std::map<std::string, int>* supportedKeys, std::stack<State*>* states) :
+    State(window, supportedKeys, states){
+
+    this->initVariables();
     this->initFonts();
     this->initKeybinds();
+    this->initBackground();
     this->initButtons();
 
-    this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-    this->background.setFillColor(sf::Color::Magenta);
 }
 
 MainMenuState::~MainMenuState(){
@@ -60,7 +97,9 @@ void MainMenuState::updateButtons(){
     // New Game
     if(this->buttons["GAME_STATE_BTN"]->isPressed()){
         // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
-        //this->states.push(new GameState(this->window, this->supportedKeys));
+        this->states->push(new GameState(this->window, this->supportedKeys,
+            this->states));
+
     }
 
     // Quit
@@ -94,4 +133,15 @@ void MainMenuState::render(sf::RenderTarget* target){
     target->draw(this->background);
 
     this->renderButtons(target);
+
+    // TEMP
+    sf::Text mouseText;
+    mouseText.setPosition(this->mousePosView.x, this->mousePosView.y - 10);
+    mouseText.setFont(this->font);
+    mouseText.setCharacterSize(12);
+    std::stringstream ss;
+    ss << this->mousePosView.x << " " << this->mousePosView.y;
+    mouseText.setString(ss.str());
+
+    target->draw(mouseText);
 }

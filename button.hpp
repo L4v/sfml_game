@@ -32,6 +32,11 @@ public:
     /*
     * Check if button is pressed
     */
+    sf::RectangleShape& getShape() ;
+
+    /*
+    * Check if button is pressed
+    */
     const bool isPressed() const;
 
     /*

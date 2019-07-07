@@ -1,29 +1,57 @@
 #include "game.hpp"
 
+void Game::initVariables(){
+    this->window = NULL;
+    this->fullscreen = false;
+    this->dt = 0.f;
+
+}
+
 void Game::initWindow(){
+
+    // TODO : USE STRUCT ?
 
     std::ifstream ifs("_config/window.ini");
 
+    this->videoModes = sf::VideoMode::getFullscreenModes();
+
+    // Default values
     std::string title = "none";
-    sf::VideoMode window_bounds(800, 600);
+    sf::VideoMode window_bounds = sf::VideoMode::getDesktopMode();
+    bool fullscreen = false;
     unsigned int framerate_limit = 60;
     bool vertical_sync_enabled = false;
+    unsigned antialiasing_level = 0;
+
+    // Reading from windows.ini file
     if(ifs.is_open()){
         std::getline(ifs, title);
         ifs >> window_bounds.width >> window_bounds.height;
+        ifs >> fullscreen;
         ifs >> framerate_limit;
         ifs >> vertical_sync_enabled;
+        ifs >> antialiasing_level;
     }
 
     ifs.close();
 
-    this->window = new sf::RenderWindow(window_bounds, title);
+    this->fullscreen = fullscreen; // fuj
+    this->windowSettings.antialiasingLevel = antialiasing_level;
+    if(this->fullscreen)
+        this->window = new sf::RenderWindow(window_bounds, title,
+            sf::Style::Fullscreen, this->windowSettings);
+    else{
+        this->window = new sf::RenderWindow(window_bounds, title,
+            sf::Style::Titlebar | sf::Style::Close, this->windowSettings);
+    }
+
     this->window->setFramerateLimit(framerate_limit);
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
 void Game::initStates(){
-    this->states.push(new MainMenuState(this->window, &this->supportedKeys));
+    this->states.push(new MainMenuState(this->window, &this->supportedKeys,
+        &this->states));
 }
 
 void Game::initKeys(){
@@ -42,6 +70,7 @@ void Game::initKeys(){
 }
 
 Game::Game(){
+    this->initVariables();
     this->initWindow();
     this->initKeys();
     this->initStates();

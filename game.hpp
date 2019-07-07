@@ -13,6 +13,15 @@ private:
 
     std::stack<State*> states;
     std::map<std::string, int> supportedKeys;
+    std::vector<sf::VideoMode> videoModes;
+    sf::ContextSettings windowSettings;
+    bool fullscreen;
+
+
+    /*
+    * Initializes variables
+    */
+    void initVariables();
 
     /*
     * Create a SFML window using a window.ini file
