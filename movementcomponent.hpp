@@ -14,6 +14,11 @@
 #include <stack>
 #include <map>
 
+
+enum DIRECTION{
+    LEFT = 0, RIGHT
+};
+
 class MovementComponent{
 private:
     sf::Sprite& sprite;
@@ -23,7 +28,10 @@ private:
     float deceleration;
 
     sf::Vector2f velocity;
+
+    DIRECTION direction;
     // Initializer functions
+
 
 public:
 
@@ -35,6 +43,9 @@ public:
     const sf::Vector2f& getVelocity() const;
 
     // Functions
+    const bool idle() const;
+
+    DIRECTION getDirection();
     void move(const float& dt, const float x_dir, const float y_dir);
     void update(const float& dt);
 };

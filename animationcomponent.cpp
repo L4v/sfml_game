@@ -1,4 +1,4 @@
-#import "animationcomponent.hpp"
+#include "animationcomponent.hpp"
 
 AnimationComponent::AnimationComponent(sf::Sprite& sprite,
     sf::Texture& textureSheet)
@@ -7,12 +7,12 @@ AnimationComponent::AnimationComponent(sf::Sprite& sprite,
     {}
 
 AnimationComponent::~AnimationComponent(){
-    for(auto *it : this->animations)
-        delete i.second;
+    for(auto &it : this->animations)
+        delete it.second;
 }
 
 // Functions
-void addAnimation(const std::string key,
+void AnimationComponent::addAnimation(const std::string key,
     float animTimer, int start_frame_x,
     int start_frame_y,int frame_x, int frame_y,
     int width, int height)
@@ -22,6 +22,9 @@ void addAnimation(const std::string key,
         start_frame_x, start_frame_y, frame_x, frame_y, width, height);
 }
 
-void AnimationComponent::play(const std::string key, const float& dt){
+void AnimationComponent::AnimationComponent::play(const std::string key,
+    const float& dt, bool toFlip)
+{
+    this->animations[key]->flip(toFlip);
     this->animations[key]->play(dt);
 }

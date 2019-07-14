@@ -22,7 +22,7 @@ public:
     void setTexture(sf::Texture& texture);
     void createMovementComponent(const float maxVelocity,
         const float acceleration, const float deceleration);
-    void createAnimationComponent(sf::Sprite&, sf::Texture&);
+    void createAnimationComponent(sf::Texture&);
 
     virtual void setPosition(const float x, const float y);
     virtual void move(const float& dt, const float& x_dir, const float& y_dir);

@@ -3,7 +3,8 @@
 MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocity,
     float acceleration, float deceleration):
     sprite(sprite), maxVelocity(maxVelocity),
-    acceleration(acceleration), deceleration(deceleration)
+    acceleration(acceleration), deceleration(deceleration),
+    direction(RIGHT)
 {
 
 }
@@ -16,14 +17,29 @@ const sf::Vector2f& MovementComponent::getVelocity() const{
 }
 
 // Functions
+
+const bool MovementComponent::idle() const{
+    // Usually bad practice to compare floats to exact 0, but here we set them
+    if(this->velocity.x == 0.f && this->velocity.y == 0.f)
+        return true;
+    else
+        return false;
+}
+
+DIRECTION MovementComponent::getDirection(){ return this->direction; }
+
 void MovementComponent::move(const float& dt, const float x_dir, const float y_dir){
     // Acceleration
+
     this->velocity.x += this->acceleration * x_dir;
     this->velocity.y += this->acceleration * y_dir;
 
 }
 
 void MovementComponent::update(const float& dt){
+
+    this->direction = this->velocity.x > 0.f ? RIGHT
+        : this->velocity.x == 0 ? this->direction : LEFT;
 
     // Max velocity check
 

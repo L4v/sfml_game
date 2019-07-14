@@ -20,13 +20,13 @@ void GameState::initKeybinds(){
 void GameState::initTextures(){
     // TODO : USE SPRITESHEETS?
     // Not really safe
-    if(!this->textures["PLAYER_IDLE"].loadFromFile(
-        "_assets/_sprites/adventurer-idle-00.png"))
-        throw "ERROR::GAME_STATE::COULD_NOT_LOAD_PLAYER_IDLE_TEXTURE";
+    if(!this->textures["PLAYER_SHEET"].loadFromFile(
+        "_assets/_sprites/character_spritesheet.png"))
+        throw "ERROR::GAME_STATE::COULD_NOT_LOAD_PLAYER_TEXTURE";
 }
 
 void GameState::initPlayers(){
-    this->player = new Player(0, 0, this->textures["PLAYER_IDLE"]);
+    this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
 }
 
 GameState::GameState(sf::RenderWindow* window,

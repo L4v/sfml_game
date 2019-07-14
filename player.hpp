@@ -15,4 +15,5 @@ public:
     virtual ~Player();
 
     // Functions
+    void update(const float&);
 };

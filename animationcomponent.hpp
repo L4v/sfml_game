@@ -19,6 +19,7 @@ private:
         sf::IntRect startRect, endRect, currRect;
         int width, height;
         float animTimer, timer;
+        bool flipped;
 
         Animation(sf::Sprite& sprite, sf::Texture& textureSheet,
             float animTimer, int start_frame_x, int start_frame_y,int frame_x, int frame_y,
@@ -29,6 +30,8 @@ private:
             width(width),
             height(height)
         {
+            flipped = false;
+            this->timer = 0;
             this->startRect = sf::IntRect(start_frame_x * width, start_frame_y
                  * height, width, height);
             this->currRect = this->startRect;
@@ -41,18 +44,32 @@ private:
             this->sprite.setTextureRect(this->startRect);
 
         }
-        virtual ~Animation();
+        virtual ~Animation(){}
 
         // Functions
+
+        /*
+        * Flips the sprite vertically
+        */
+        void flip(bool toFlip){
+            if(toFlip && !flipped){
+                sprite.setOrigin({ sprite.getLocalBounds().width, 0 });
+                sprite.setScale({ -1, 1 });
+                this->flipped = true;
+            }else if(!toFlip && flipped){
+                sprite.setOrigin({ 0, 0 });
+                sprite.setScale({ 1, 1 });
+                this->flipped = false;
+            }
+        }
 
         /*
         * Handles the updates
         */
         void play(const float& dt){
-
             // TODO : Make it nicer
             // Update timer
-            this->timer = 10.f * dt;
+            this->timer += 100.f * dt;
             if(this->timer >= animTimer){
                 // Resets timer
                 this->timer = 0.f;
@@ -128,5 +145,6 @@ public:
     /*
     * Plays specific animation
     */
-    void play(const std::string key, const float& dt);
+    void play(const std::string key, const float& dt, bool toFlip = false);
+
 };
