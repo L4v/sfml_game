@@ -3,7 +3,8 @@
 AnimationComponent::AnimationComponent(sf::Sprite& sprite,
     sf::Texture& textureSheet)
     : sprite(sprite),
-    textureSheet(textureSheet)
+    textureSheet(textureSheet),
+    lastAnimation(NULL)
     {}
 
 AnimationComponent::~AnimationComponent(){
@@ -25,6 +26,13 @@ void AnimationComponent::addAnimation(const std::string key,
 void AnimationComponent::AnimationComponent::play(const std::string key,
     const float& dt, bool toFlip)
 {
+    // Resetting the last animation
+    if(this->lastAnimation != this->animations[key]){
+        if(!this->lastAnimation)
+            this->lastAnimation = this->animations[key];
+        this->lastAnimation->reset();
+        this->lastAnimation = this->animations[key];
+    }
     this->animations[key]->flip(toFlip);
     this->animations[key]->play(dt);
 }

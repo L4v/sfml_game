@@ -28,8 +28,7 @@ private:
             textureSheet(textureSheet),
             animTimer(animTimer),
             width(width),
-            height(height)
-        {
+            height(height){
             flipped = false;
             this->timer = 0;
             this->startRect = sf::IntRect(start_frame_x * width, start_frame_y
@@ -44,7 +43,9 @@ private:
             this->sprite.setTextureRect(this->startRect);
 
         }
-        virtual ~Animation(){}
+        virtual ~Animation(){
+
+        }
 
         // Functions
 
@@ -107,6 +108,7 @@ private:
     sf::Texture& textureSheet;
     // Map for handling animations
     std::map<std::string, Animation*> animations;
+    Animation* lastAnimation;
 
 public:
 
