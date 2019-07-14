@@ -19,44 +19,64 @@ const sf::Vector2f& MovementComponent::getVelocity() const{
 void MovementComponent::move(const float& dt, const float x_dir, const float y_dir){
     // Acceleration
     this->velocity.x += this->acceleration * x_dir;
-
-    // Check for right movement max velocity
-    if(this->velocity.x > 0.f){
-        if(this->velocity.x > this->maxVelocity)
-            this->velocity.x = this->maxVelocity;
-    // Check for left movement max velocity
-    } else if(this->velocity.x < 0.f){
-        if(-this->velocity.x > -this->maxVelocity)
-            this->velocity.x = -this->maxVelocity;
-    }
     this->velocity.y += this->acceleration * y_dir;
-
-    // Check for down movement max velocity
-    if(this->velocity.y > 0.f){
-        if(this->velocity.y > this->maxVelocity)
-            this->velocity.y = this->maxVelocity;
-    // Check for up movement max velocity
-    } else if(this->velocity < 0.f){
-        if(-this->velocity.y > -this->maxVelocity)
-            this->velocity.y = -this->maxVelocity;
-    }
 
 }
 
 void MovementComponent::update(const float& dt){
+
+    // Max velocity check
+
+    // Check for right movement max velocity
+    if(this->velocity.x > 0.f){
+        if(this->velocity.x > this->maxVelocity){
+            this->velocity.x = this->maxVelocity;
+        }
+        // Check for left movement max velocity
+    } else if(this->velocity.x < 0.f){
+        if(this->velocity.x < -this->maxVelocity)
+            this->velocity.x = -this->maxVelocity;
+    }
+
+    // Check for down movement max velocity
+    if(this->velocity.y > 0.f){
+        if(this->velocity.y > this->maxVelocity){
+            this->velocity.y = this->maxVelocity;
+        }
+        // Check for up movement max velocity
+    } else if(this->velocity.y < 0.f){
+        if(this->velocity.y < -this->maxVelocity)
+            this->velocity.y = -this->maxVelocity;
+    }
+
     // Deceleration
 
     // Right direction
     if(this->velocity.x > 0.f){
         this->velocity.x -= deceleration;
-        if(this->velocity.x < 0.f)
+        if(this->velocity.x < 0.f){
             this->velocity.x = 0.f;
+        }
 
     // Left direction
     }else if(this->velocity.x < 0.f){
         this->velocity.x += deceleration;
         if(this->velocity.x > 0.f)
             this->velocity.x = 0.f;
+    }
+
+    // Down direction
+    if(this->velocity.y > 0.f){
+        this->velocity.y -= deceleration;
+        if(this->velocity.y < 0.f){
+            this->velocity.y = 0.f;
+        }
+
+    // Up direction
+    }else if(this->velocity.y < 0.f){
+        this->velocity.y += deceleration;
+        if(this->velocity.y > 0.f)
+            this->velocity.y = 0.f;
     }
 
     // Final move

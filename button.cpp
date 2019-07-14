@@ -1,19 +1,21 @@
 #include "button.hpp"
 
 Button::Button(float x, float y, float width, float height,
-    sf::Font* font, std::string text,
+    sf::Font* font, std::string text, unsigned characterSize,
+    sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
     sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor){
 
     this->buttonState = BTN_IDLE;
 
     this->shape.setPosition(sf::Vector2f(x, y));
     this->shape.setSize(sf::Vector2f(width, height));
+    this->shape.setFillColor(idleColor);
 
     this->font = font;
     this->text.setFont(*this->font);
     this->text.setString(text);
-    this->text.setFillColor(sf::Color::White);
-    this->text.setCharacterSize(24);
+    this->text.setFillColor(textIdleColor);
+    this->text.setCharacterSize(characterSize);
     this->text.setPosition(
         this->shape.getPosition().x + this->shape.getGlobalBounds().width / 2.f
          - this->text.getGlobalBounds().width / 2.f,
@@ -21,11 +23,14 @@ Button::Button(float x, float y, float width, float height,
          - this->text.getGlobalBounds().height * 3.f / 4.f
     );
 
+    this->textIdleColor = textIdleColor;
+    this->textHoverColor = textHoverColor;
+    this->textActiveColor = textActiveColor;
+
     this->idleColor = idleColor;
     this->hoverColor = hoverColor;
     this->activeColor = activeColor;
 
-    this->shape.setFillColor(this->idleColor);
 }
 
 Button::~Button(){}
@@ -60,14 +65,20 @@ void Button::update(sf::Vector2f mousePos){
     switch(this->buttonState){
         case BTN_IDLE:
             this->shape.setFillColor(this->idleColor);
+            this->text.setFillColor(this->textIdleColor);
             break;
         case BTN_HOVER:
             this->shape.setFillColor(this->hoverColor);
+            this->text.setFillColor(this->textHoverColor);
             break;
         case BTN_ACTIVE:
             this->shape.setFillColor(this->activeColor);
+            this->text.setFillColor(this->textActiveColor);
             break;
-        default: this->shape.setFillColor(sf::Color::Red);
+        default:
+            this->shape.setFillColor(sf::Color::Red);
+            this->text.setFillColor(sf::Color::Blue);
+            break;
     }
 
 }

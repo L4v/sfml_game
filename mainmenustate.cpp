@@ -46,27 +46,44 @@ void MainMenuState::initButtons(){
     this->buttons["GAME_STATE_BTN"] = new Button(
         this->background.getSize().x / 10, this->background.getSize().y * 5 / 8,
         150, 50,
-        &this->font, "New Game",
-        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
-        sf::Color(20, 20, 20, 255));
+        &this->font, "New Game", 24,
+        sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 250),
+        sf::Color(20, 20, 20, 50),
+        sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
+        sf::Color(20, 20, 20, 0));
 
     this->buttons["SETTINGS"] = new Button(
         this->background.getSize().x / 10,
         this->buttons["GAME_STATE_BTN"]->getShape().getPosition().y
             + this->buttons["GAME_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
         150, 50,
-        &this->font, "Settings",
-        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
-        sf::Color(20, 20, 20, 255));
+        &this->font, "Settings", 24,
+        sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 250),
+        sf::Color(20, 20, 20, 50),
+        sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
+        sf::Color(20, 20, 20, 0));
+
+    this->buttons["EDITOR_STATE_BTN"] = new Button(
+        this->background.getSize().x / 10,
+        this->buttons["SETTINGS"]->getShape().getPosition().y
+            + this->buttons["SETTINGS"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
+        150, 50,
+        &this->font, "Editor", 24,
+        sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 250),
+        sf::Color(20, 20, 20, 50),
+        sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
+        sf::Color(20, 20, 20, 0));
 
     this->buttons["EXIT"] = new Button(
         this->background.getSize().x / 10,
-        this->buttons["SETTINGS"]->getShape().getPosition().y
-            + this->buttons["SETTINGS"]->getShape().getSize().y + margin,//this->background.getSize().y / 2,
+        this->buttons["EDITOR_STATE_BTN"]->getShape().getPosition().y
+            + this->buttons["EDITOR_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y / 2,
         150, 50,
-        &this->font, "Quit",
-        sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255),
-        sf::Color(20, 20, 20, 255));
+        &this->font, "Quit", 24,
+        sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 250),
+        sf::Color(20, 20, 20, 50),
+        sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
+        sf::Color(20, 20, 20, 0));
 }
 
 MainMenuState::MainMenuState(sf::RenderWindow* window,
