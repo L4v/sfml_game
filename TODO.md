@@ -10,3 +10,5 @@
 - Make animation timer prettier
 - Rename member variables to differentiate from others, start with "m"?
 - Optimize animation subclass
+- Clean up pointers, use smart pointers
+- Tidy up header files

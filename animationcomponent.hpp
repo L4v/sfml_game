@@ -21,7 +21,7 @@ private:
         float animTimer, timer;
 
         Animation(sf::Sprite& sprite, sf::Texture& textureSheet,
-            float animTimer, int start_x, int start_y,int end_x, int end_y,
+            float animTimer, int start_frame_x, int start_frame_y,int frame_x, int frame_y,
             int width, int height)
             : sprite(sprite),
             textureSheet(textureSheet),
@@ -29,9 +29,11 @@ private:
             width(width),
             height(height)
         {
-            this->startRect = sf::IntRect(start_x, start_y, width, height);
+            this->startRect = sf::IntRect(start_frame_x * width, start_frame_y
+                 * height, width, height);
             this->currRect = this->startRect;
-            this->endRect = sf::IntRect(end_x, end_y, width, height);
+            this->endRect = sf::IntRect(frame_x * width, frame_y * height,
+                width, height);
 
             // Sets the texture of the sprite to the whole sprite
             this->sprite.setTexture(this->textureSheet, true);
@@ -46,7 +48,7 @@ private:
         /*
         * Handles the updates
         */
-        void update(const float& dt){
+        void play(const float& dt){
 
             // TODO : Make it nicer
             // Update timer
@@ -63,6 +65,7 @@ private:
                 }else{
                     this->currRect.left = this->startRect.left;
                 }
+                this->sprite.setTextureRect(this->currRect);
             }
         }
         //void play();
@@ -70,12 +73,15 @@ private:
         /*
         * Pauses the animation
         */
-        void pause();
+        //void pause();
 
         /*
         * Resets the animation
         */
-        void reset();
+        void reset(){
+            this->timer = 0.f;
+            this->currRect = this->startRect;
+        }
 
     };
 
@@ -83,7 +89,7 @@ private:
     sf::Sprite& sprite;
     sf::Texture& textureSheet;
     // Map for handling animations
-    std::map<std::string, Animation> animations;
+    std::map<std::string, Animation*> animations;
 
 public:
 
@@ -99,25 +105,28 @@ public:
     /*
     * Adds an animation
     */
-    void addAnimation(const std::string key);
+    void addAnimation(const std::string key,
+        float animTimer, int start_frame_x,
+        int start_frame_y,int frame_x, int frame_y,
+        int width, int height);
 
     /*
     * Starts the appropriate animation
     */
-    void startAnimation(const std::string animation);
+    //void startAnimation(const std::string animation);
 
     /*
     * Pauses the appropriate animation
     */
-    void pauseAnimation(const std::string animation);
+    //void pauseAnimation(const std::string animation);
 
     /*
     * Resets the appropriate animation
     */
-    void resetAnimation(const std::string animation);
+    //void resetAnimation(const std::string animation);
 
     /*
-    * Updates all animations
+    * Plays specific animation
     */
-    void update(const float& dt);
+    void play(const std::string key, const float& dt);
 };
