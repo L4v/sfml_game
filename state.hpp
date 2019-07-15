@@ -9,6 +9,7 @@ protected:
     std::map<std::string, int>* supportedKeys;
     std::map<std::string, int> keybinds;
     bool quit; // Whether to quit a state
+    bool mPaused;
 
     sf::Vector2i mousePosScreen;
     sf::Vector2i mousePosWindow;
@@ -35,7 +36,17 @@ public:
     /*
     * Performs tasks before ending the state
     */
-    virtual void endState();
+    void endState();
+
+    /*
+    * Pauses the state
+    */
+    void pauseState();
+
+    /*
+    * Resumes paused state
+    */
+    void resumeState();
 
     /*
     * Updates the mouse positions

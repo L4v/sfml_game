@@ -1,12 +1,11 @@
 #include "state.hpp"
 
 State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys,
-            std::stack<State*>* states){
+            std::stack<State*>* states)
+    : window(window), supportedKeys(supportedKeys), states(states), quit(false),
+    mPaused(false)
+{
 
-    this->window = window;
-    this->supportedKeys = supportedKeys;
-    this->states = states;
-    this->quit = false;
 }
 
 State::~State(){}
@@ -14,6 +13,10 @@ State::~State(){}
 void State::endState(){
     this->quit = true;
 }
+
+void State::pauseState(){ this->mPaused = true; }
+
+void State::resumeState(){ this->mPaused = false; }
 
 void State::updateMousePositions(){
     this->mousePosScreen = sf::Mouse::getPosition();

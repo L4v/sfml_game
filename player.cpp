@@ -28,12 +28,13 @@ Player::~Player(){}
 
 // Functions
 
-void Player::update(const float& dt){
-    this->movementComponent->update(dt);
-
+void Player::updateAttack(){
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         this->mAttacking = true;
     }
+}
+
+void Player::updateAnimations(const float& dt){
     if(this->mAttacking){
         this->animationComponent->play("ATTACK", dt,
             true, this->movementComponent->getDirection() == LEFT ? true : false);
@@ -50,6 +51,14 @@ void Player::update(const float& dt){
             std::abs(this->movementComponent->getVelocity().x),
             std::abs(this->movementComponent->getMaxVelocity()),
             false, this->movementComponent->getDirection() == LEFT ? true : false);
+}
+
+void Player::update(const float& dt){
+    this->movementComponent->update(dt);
+
+    this->updateAttack();
+
+    this->updateAnimations(dt);
 
     this->hitboxComponent->update();
 }

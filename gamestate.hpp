@@ -1,12 +1,16 @@
 #pragma once
 
 #include "state.hpp"
+#include "pausemenu.hpp"
 
 // TODO : STRUCT FOR ALL THE PARAMETERS (window, keys, states)?
 
 class GameState : public State{
 private:
+    PauseMenu mPmenu;
+
     Player *player;
+    sf::Texture mTexture; // ??
 
 // Initializers
     void initKeybinds();
