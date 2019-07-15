@@ -12,3 +12,5 @@
 - Optimize animation subclass
 - Clean up pointers, use smart pointers
 - Tidy up header files
+- Use Box2D for collision stuff
+- Put some "basic" parameters in a config file, so there's no need to recompile

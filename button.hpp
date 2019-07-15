@@ -52,5 +52,5 @@ public:
     /*
     * Render buttons
     */
-    void render(sf::RenderTarget* target);
+    void render(sf::RenderTarget&);
 };
