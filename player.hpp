@@ -5,6 +5,7 @@
 class Player : public Entity{
 private:
     // Variables
+    bool mAttacking;
 
     // Initialization functions
     void initVariables();

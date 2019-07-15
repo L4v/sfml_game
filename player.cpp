@@ -2,7 +2,7 @@
 
 // Initialization functions
 void Player::initVariables(){
-
+    this->mAttacking = false;
 }
 
 void Player::initComponents(){
@@ -31,16 +31,25 @@ Player::~Player(){}
 void Player::update(const float& dt){
     this->movementComponent->update(dt);
 
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        this->mAttacking = true;
+    }
+    if(this->mAttacking){
+        this->animationComponent->play("ATTACK", dt,
+            true, this->movementComponent->getDirection() == LEFT ? true : false);
+
+        if(this->animationComponent->isDone("ATTACK"))
+            this->mAttacking = false;
+    }
+
     if(this->movementComponent->idle())
         this->animationComponent->play("IDLE", dt,
-            false,
-            this->movementComponent->getDirection() == LEFT ? true : false);
+            false, this->movementComponent->getDirection() == LEFT ? true : false);
     else
         this->animationComponent->play("WALK", dt,
             std::abs(this->movementComponent->getVelocity().x),
             std::abs(this->movementComponent->getMaxVelocity()),
-            false,
-            this->movementComponent->getDirection() == LEFT ? true : false);
+            false, this->movementComponent->getDirection() == LEFT ? true : false);
 
     this->hitboxComponent->update();
 }

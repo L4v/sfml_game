@@ -20,6 +20,7 @@ private:
         int width, height, maxFrame;
         float animTimer, timer;
         bool flipped;
+        bool mDone;
 
         Animation(sf::Sprite& sprite, sf::Texture& textureSheet,
             float animTimer, int start_frame_x, int start_frame_y,int frame_x, int frame_y,
@@ -27,11 +28,12 @@ private:
             : sprite(sprite),
             textureSheet(textureSheet),
             animTimer(animTimer),
+            timer(0.f),
+            mDone(false),
+            flipped(false),
             width(width),
             height(height),
             maxFrame(maxFrame){
-            flipped = false;
-            this->timer = 0;
             this->startRect = sf::IntRect(start_frame_x * width, start_frame_y
                  * height, width, height);
             this->currRect = this->startRect;
@@ -42,9 +44,6 @@ private:
             this->sprite.setTexture(this->textureSheet, true);
             // Sets the rectangle to the first frame of the animation
             this->sprite.setTextureRect(this->startRect);
-
-        }
-        virtual ~Animation(){
 
         }
 
@@ -65,15 +64,23 @@ private:
             }
         }
 
+        // Getters
+
+        /*
+        * Returns whether the animation is done or not
+        */
+        const bool& isDone() const{ return this->mDone; }
+
         /*
         * Plays the animation
         */
-        void play(const float& dt)
+        const bool& play(const float& dt)
         {
             // TODO : Make it nicer
-            // Update timer
-            // Timer with completion percentage using modifier
+            this->mDone = false;
+            // Updates the timer
             this->timer += 100.f * dt;
+
             if(this->timer >= animTimer){
                 // Resets timer
                 this->timer = 0.f;
@@ -92,6 +99,7 @@ private:
                     if(this->currRect.top == this->endRect.top){
                         // Reset
                         this->currRect = this->startRect;
+                        this->mDone = true;
                     }else{
                         // Wrap
                         this->currRect.top += this->height;
@@ -100,16 +108,19 @@ private:
                 }
                 this->sprite.setTextureRect(this->currRect);
             }
+
+            return this->mDone;
         }
 
         /*
         * Plays the animation using the speed modifier
         */
-        void play(const float& dt, const float& percentage)
+        const bool& play(const float& dt, const float& percentage)
         {
             // TODO : Make it nicer
-            // Update timer
+            this->mDone = false;
 
+            // Timer with percentage of completion
             this->timer += (percentage < 0.5f ? 0.5f : percentage) * 100.f * dt;
             if(this->timer >= animTimer){
                 // Resets timer
@@ -129,6 +140,7 @@ private:
                     if(this->currRect.top == this->endRect.top){
                         // Reset
                         this->currRect = this->startRect;
+                        this->mDone = true;
                     }else{
                         // Wrap
                         this->currRect.top += this->height;
@@ -137,6 +149,7 @@ private:
                 }
                 this->sprite.setTextureRect(this->currRect);
             }
+            return this->mDone;
         }
         //void play();
 
@@ -165,12 +178,18 @@ private:
 
 public:
 
-
     /*
     * Constructor and destructor
     */
     AnimationComponent(sf::Sprite& sprite, sf::Texture& textureSheet);
     virtual ~AnimationComponent();
+
+    // Getters
+
+    /*
+    * Returns whether a specific Animation is done or not
+    */
+    const bool& isDone(const std::string key);
 
     // Functions
 
