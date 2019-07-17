@@ -7,7 +7,8 @@
 
 class GameState : public State{
 private:
-    PauseMenu mPmenu;
+    sf::Font mFont;
+    PauseMenu* mPmenu;
 
     Player *player;
     sf::Texture mTexture; // ??
@@ -16,13 +17,19 @@ private:
     void initKeybinds();
     void initTextures();
     void initPlayers();
+    void initFonts();
+    void initPauseMenu();
 
 public:
-    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys,
-            std::stack<State*>* states);
+    GameState(sf::RenderWindow*, std::map<std::string, int>*,
+        std::stack<State*>*);
     virtual ~GameState();
 
-    void updateInput(const float& dt);
-    void update(const float& dt);
+    // Functions
+
+    void updateInput(const float&);
+    void updatePlayerInput(const float&);
+    void updatePauseMenuButtons();
+    void update(const float&);
     void render(sf::RenderTarget* target = nullptr);
 };

@@ -47,7 +47,7 @@ public:
     /*
     * Update hovered/pressed buttons
     */
-    void update(sf::Vector2f mousePos);
+    void update(const sf::Vector2f& mousePos);
 
     /*
     * Render buttons
