@@ -1,5 +1,6 @@
 ## TODO List
 
+- MAKE ANIMATION HELPER SOFTWARE, TO PLAYBACK ANIMATED SPRITE
 - Update TODO list lol (track down all the TODO comments)
 - Sort TODO list by priority
 - Make Button (GUI maybe?) wrapper / handler
