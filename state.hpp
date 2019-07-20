@@ -11,6 +11,10 @@ protected:
     bool quit; // Whether to quit a state
     bool mPaused;
 
+    // For adding delay to keys
+    float mKeytime;
+    float mKeytimeMax;
+
     sf::Vector2i mousePosScreen;
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosView;
@@ -28,10 +32,20 @@ public:
         std::stack<State*>* states);
     virtual ~State();
 
+    // Getters and setters
+
     /*
     * Returns whether the state wishes to quit or not
     */
     const bool& getQuit() const;
+
+    /*
+    * Returns whether the keytime has elapsed
+    */
+    const bool getKeytime();
+
+
+    // Functions
 
     /*
     * Performs tasks before ending the state
@@ -47,6 +61,11 @@ public:
     * Resumes paused state
     */
     void resumeState();
+
+    /*
+    * Updates the keytime, so one keypress isn't registered as a bunch
+    */
+    virtual void updateKeytime(const float& dt);
 
     /*
     * Updates the mouse positions
