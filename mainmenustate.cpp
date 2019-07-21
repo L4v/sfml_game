@@ -1,6 +1,6 @@
 #include "mainmenustate.hpp"
 
-// Inits
+// Init functions
 
 void MainMenuState::initVariables(){}
 
@@ -52,7 +52,7 @@ void MainMenuState::initButtons(){
         sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
         sf::Color(20, 20, 20, 0));
 
-    this->buttons["SETTINGS"] = new Button(
+    this->buttons["SETTINGS_STATE_BTN"] = new Button(
         this->background.getSize().x / 10,
         this->buttons["GAME_STATE_BTN"]->getShape().getPosition().y
             + this->buttons["GAME_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
@@ -65,8 +65,8 @@ void MainMenuState::initButtons(){
 
     this->buttons["EDITOR_STATE_BTN"] = new Button(
         this->background.getSize().x / 10,
-        this->buttons["SETTINGS"]->getShape().getPosition().y
-            + this->buttons["SETTINGS"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
+        this->buttons["SETTINGS_STATE_BTN"]->getShape().getPosition().y
+            + this->buttons["SETTINGS_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y * 5 / 8,
         150, 50,
         &this->font, "Editor", 24,
         sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 250),
@@ -74,7 +74,7 @@ void MainMenuState::initButtons(){
         sf::Color(100, 100, 100, 0), sf::Color(150, 150, 150, 0),
         sf::Color(20, 20, 20, 0));
 
-    this->buttons["EXIT"] = new Button(
+    this->buttons["EXIT_BTN"] = new Button(
         this->background.getSize().x / 10,
         this->buttons["EDITOR_STATE_BTN"]->getShape().getPosition().y
             + this->buttons["EDITOR_STATE_BTN"]->getShape().getSize().y + margin,//this->background.getSize().y / 2,
@@ -101,8 +101,9 @@ MainMenuState::MainMenuState(sf::RenderWindow* window,
 MainMenuState::~MainMenuState(){
     for(auto it = this->buttons.begin(); it != this->buttons.end(); ++it)
         delete it->second;
-
 }
+
+// Functions
 
 void MainMenuState::updateButtons(){
     for(auto &it : this->buttons){
@@ -117,6 +118,11 @@ void MainMenuState::updateButtons(){
     }
 
     // Settings
+    if(this->buttons["SETTINGS_STATE_BTN"]->isPressed()){
+        // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
+        this->states->push(new SettingsState(this->window, this->supportedKeys,
+            this->states));
+    }
 
     // Editor
     if(this->buttons["EDITOR_STATE_BTN"]->isPressed())
@@ -124,7 +130,7 @@ void MainMenuState::updateButtons(){
             this->states));
 
     // Quit
-    if(this->buttons["EXIT"]->isPressed()){
+    if(this->buttons["EXIT_BTN"]->isPressed()){
         this->endState();
     }
 }
