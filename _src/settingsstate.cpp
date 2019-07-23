@@ -6,8 +6,8 @@ void SettingsState::initVariables(){}
 
 void SettingsState::initBackground(){
     this->mBackground.setSize(sf::Vector2f(
-        static_cast<float>(this->window->getSize().x),
-        static_cast<float>(this->window->getSize().y)));
+        static_cast<float>(this->mData->window->getSize().x),
+        static_cast<float>(this->mData->window->getSize().y)));
 
     // TODO : USE BETTER FILE LOADING (VARIABLES)
     if(!this->mBackgroundTexture.loadFromFile(
@@ -31,7 +31,7 @@ void SettingsState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys->at(key2);
     }
 
     ifs.close();
@@ -53,9 +53,8 @@ void SettingsState::initButtons(){
         sf::Color(20, 20, 20, 0));
 }
 
-SettingsState::SettingsState(sf::RenderWindow* window,
-    std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-    : State(window, supportedKeys, states)
+SettingsState::SettingsState(GameDataRef data)
+    : State(data)
 {
     this->initVariables();
     this->initFonts();
@@ -103,7 +102,7 @@ void SettingsState::renderButtons(sf::RenderTarget& target){
 
 void SettingsState::render(sf::RenderTarget* target){
     if(!target)
-        target = this->window;
+        target = this->mData->window;
 
     target->draw(this->mBackground);
 

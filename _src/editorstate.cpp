@@ -22,7 +22,7 @@ void EditorState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys->at(key2);
     }
 
     ifs.close();
@@ -36,9 +36,8 @@ void EditorState::initButtons(){
 
 }
 
-EditorState::EditorState(sf::RenderWindow* window,
-    std::map<std::string, int>* supportedKeys, std::stack<State*>* states) :
-    State(window, supportedKeys, states){
+EditorState::EditorState(GameDataRef data) :
+    State(data){
 
     this->initVariables();
     this->initFonts();
@@ -84,7 +83,7 @@ void EditorState::renderButtons(sf::RenderTarget& target){
 
 void EditorState::render(sf::RenderTarget* target){
     if(!target)
-        target = this->window;
+        target = this->mData->window;
 
 
     this->renderButtons(*target);

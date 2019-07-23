@@ -1,7 +1,8 @@
 #include "game.hpp"
 
 void Game::initVariables(){
-    this->window = NULL;
+    //this->window = NULL;
+    this->mData->window = NULL;
     this->fullscreen = false;
     this->dt = 0.f;
 
@@ -38,20 +39,19 @@ void Game::initWindow(){
     this->fullscreen = fullscreen; // fuj
     this->windowSettings.antialiasingLevel = antialiasing_level;
     if(this->fullscreen)
-        this->window = new sf::RenderWindow(window_bounds, title,
+        this->mData->window = new sf::RenderWindow(window_bounds, title,
             sf::Style::Fullscreen, this->windowSettings);
     else{
-        this->window = new sf::RenderWindow(window_bounds, title,
+        this->mData->window = new sf::RenderWindow(window_bounds, title,
             sf::Style::Titlebar | sf::Style::Close, this->windowSettings);
     }
 
-    this->window->setFramerateLimit(framerate_limit);
-    this->window->setVerticalSyncEnabled(vertical_sync_enabled);
+    this->mData->window->setFramerateLimit(framerate_limit);
+    this->mData->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
 void Game::initStates(){
-    this->states.push(new MainMenuState(this->window, &this->supportedKeys,
-        &this->states));
+    this->mData->states.push(new MainMenuState(this->mData);
 }
 
 void Game::initKeys(){
@@ -63,7 +63,7 @@ void Game::initKeys(){
         unsigned int key_value = 0;
 
         while(ifs >> key >> key_value)
-            this->supportedKeys[key] = key_value;
+            this->mData->supportedKeys[key] = key_value;
     }
 
     ifs.close();
@@ -77,12 +77,12 @@ Game::Game(){
 }
 
 Game::~Game(){
-    delete this->window;
+    /*delete this->window;
 
     while(!this->states.empty()){
         delete this->states.top();
         this->states.pop();
-    }
+    }*/
 }
 
 void Game::endApplication(){
@@ -95,42 +95,42 @@ void Game::updateDt(){
 }
 
 void Game::updateSFMLEvents(){
-    while(this->window->pollEvent(this->sfEvent)){
+    while(this->mData->window->pollEvent(this->sfEvent)){
         if(this->sfEvent.type == sf::Event::Closed)
-            this->window->close();
+            this->mData->window->close();
     }
 }
 
 void Game::update(){
     this->updateSFMLEvents();
 
-    if(!this->states.empty()){
-        this->states.top()->update(this->dt);
+    if(!this->mData->states.empty()){
+        this->mData->states.top()->update(this->dt);
 
         // Check for quit and quitting the state
-        if(this->states.top()->getQuit()){
-            this->states.top()->endState();
-            delete this->states.top();
-            this->states.pop();
+        if(this->mData->states.top()->getQuit()){
+            this->mData->states.top()->endState();
+            delete this->mData->states.top();
+            this->mData->states.pop();
         }
     }else{
         // Else if there are no states, then the application ends
         this->endApplication();
-        this->window->close();
+        this->mData->window->close();
     }
 }
 
 void Game::render(){
-    this->window->clear();
+    this->mData->window->clear();
 
-    if(!this->states.empty())
-        this->states.top()->render();
+    if(!this->mData->states.empty())
+        this->mData->states.top()->render();
 
-    this->window->display();
+    this->mData->window->display();
 }
 
 void Game::run(){
-    while(this->window->isOpen()){
+    while(this->mData->window->isOpen()){
         this->updateDt();
         this->update();
         this->render();

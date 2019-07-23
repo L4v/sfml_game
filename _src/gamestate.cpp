@@ -11,7 +11,7 @@ void GameState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys->at(key2);
     }
 
     ifs.close();
@@ -35,15 +35,15 @@ void GameState::initFonts(){
 }
 
 void GameState::initPauseMenu(){
-    this->mPmenu = new PauseMenu(*this->window, this->mFont);
+    this->mPmenu = new PauseMenu(*this->mData->window, this->mFont);
 
     this->mPmenu->addButton("QUIT", "", 0, "Quit");
 }
 
-GameState::GameState(sf::RenderWindow* window,
-    std::map<std::string, int>* supportedKeys, std::stack<State*>* states) :
-    State(window, supportedKeys, states){
-        this->initKeybinds();
+GameState::GameState(GameDataRef data) :
+    State(data)
+{
+    this->initKeybinds();
     this->initFonts();
     this->initTextures();
     this->initPauseMenu();
@@ -103,7 +103,7 @@ void GameState::update(const float& dt){
 
 void GameState::render(sf::RenderTarget* target){
     if(!target)
-        target = this->window;
+        target = this->mData->window;
 
     this->player->render(*target);
     // Pause menu render

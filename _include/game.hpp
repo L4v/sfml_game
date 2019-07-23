@@ -1,21 +1,37 @@
 #pragma once
 
 #include "mainmenustate.hpp"
+#include <memory>
 
+
+/*
+* Data containing info about the window, state stack, keys, etc..
+*/
+struct GameData{
+    sf::RenderWindow* window;
+    std::map<std::string, int>* supportedKeys;
+    std::stack<State*>* states;
+};
+
+typedef std::shared_ptr<GameData> GameDataRef;
 
 class Game{
 private:
-    sf::RenderWindow *window;
+    // Game data pointer
+    GameDataRef mData = std::make_shared<GameData>();
+
+    //sf::RenderWindow *window;
     sf::Event sfEvent;
 
     sf::Clock dtClock;
     float dt;
 
-    std::stack<State*> states;
-    std::map<std::string, int> supportedKeys;
+    //std::stack<State*> states;
+    //std::map<std::string, int> supportedKeys;
     std::vector<sf::VideoMode> videoModes;
     sf::ContextSettings windowSettings;
     bool fullscreen;
+
 
 
     /*

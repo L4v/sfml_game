@@ -15,14 +15,13 @@ class EditorState : public State{
     void initKeybinds();
     void initButtons();
     public:
-    EditorState(sf::RenderWindow* window,
-        std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    EditorState(GameDataRef);
     virtual ~EditorState();
 
     void updateButtons();
-    void updateInput(const float& dt);
-    void update(const float& dt);
+    void updateInput(const float&);
+    void update(const float&);
 
-    void renderButtons(sf::RenderTarget& target);
+    void renderButtons(sf::RenderTarget&);
     void render(sf::RenderTarget* target = nullptr);
 };

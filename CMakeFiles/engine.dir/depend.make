@@ -11,9 +11,14 @@ CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/animationcomponent.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/button.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/editorstate.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/entity.hpp
+CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/game.hpp
+CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/gamestate.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/hitboxcomponent.hpp
+CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/mainmenustate.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/movementcomponent.hpp
+CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/pausemenu.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/player.hpp
+CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/settingsstate.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: ./_include/state.hpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o: _src/editorstate.cpp
 
@@ -40,12 +45,16 @@ CMakeFiles/engine.dir/_src/game.cpp.o: _src/game.cpp
 
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/animationcomponent.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/button.hpp
+CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/editorstate.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/entity.hpp
+CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/game.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/gamestate.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/hitboxcomponent.hpp
+CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/mainmenustate.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/movementcomponent.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/pausemenu.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/player.hpp
+CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/settingsstate.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: ./_include/state.hpp
 CMakeFiles/engine.dir/_src/gamestate.cpp.o: _src/gamestate.cpp
 
@@ -71,6 +80,7 @@ CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/animationcomponent.hp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/button.hpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/editorstate.hpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/entity.hpp
+CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/game.hpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/gamestate.hpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/hitboxcomponent.hpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o: ./_include/mainmenustate.hpp
@@ -97,19 +107,31 @@ CMakeFiles/engine.dir/_src/player.cpp.o: _src/player.cpp
 
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/animationcomponent.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/button.hpp
+CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/editorstate.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/entity.hpp
+CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/game.hpp
+CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/gamestate.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/hitboxcomponent.hpp
+CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/mainmenustate.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/movementcomponent.hpp
+CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/pausemenu.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/player.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/settingsstate.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: ./_include/state.hpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o: _src/settingsstate.cpp
 
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/animationcomponent.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/button.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/editorstate.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/entity.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/game.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/gamestate.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/hitboxcomponent.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/mainmenustate.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/movementcomponent.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/pausemenu.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/player.hpp
+CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/settingsstate.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: ./_include/state.hpp
 CMakeFiles/engine.dir/_src/state.cpp.o: _src/state.cpp
 

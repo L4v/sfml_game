@@ -6,8 +6,8 @@ void MainMenuState::initVariables(){}
 
 void MainMenuState::initBackground(){
     this->background.setSize(sf::Vector2f(
-        static_cast<float>(this->window->getSize().x),
-        static_cast<float>(this->window->getSize().y)));
+        static_cast<float>(this->mData->window->getSize().x),
+        static_cast<float>(this->mData->window->getSize().y)));
 
     // TODO : USE BETTER FILE LOADING (VARIABLES)
     if(!this->backgroundTexture.loadFromFile(
@@ -31,7 +31,7 @@ void MainMenuState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys->at(key2);
     }
 
     ifs.close();
@@ -86,9 +86,8 @@ void MainMenuState::initButtons(){
         sf::Color(20, 20, 20, 0));
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window,
-    std::map<std::string, int>* supportedKeys, std::stack<State*>* states) :
-    State(window, supportedKeys, states){
+MainMenuState::MainMenuState(GameDataRef data) :
+    State(data){
 
     this->initVariables();
     this->initFonts();
@@ -113,21 +112,18 @@ void MainMenuState::updateButtons(){
     // New Game
     if(this->buttons["GAME_STATE_BTN"]->isPressed()){
         // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
-        this->states->push(new GameState(this->window, this->supportedKeys,
-            this->states));
+        this->mData->states->push(new GameState(this->mData));
     }
 
     // Settings
     if(this->buttons["SETTINGS_STATE_BTN"]->isPressed()){
         // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
-        this->states->push(new SettingsState(this->window, this->supportedKeys,
-            this->states));
+        this->mData->states->push(new SettingsState(this->mData));
     }
 
     // Editor
     if(this->buttons["EDITOR_STATE_BTN"]->isPressed())
-        this->states->push(new EditorState(this->window, this->supportedKeys,
-            this->states));
+        this->states->push(new EditorState(this->mData));
 
     // Quit
     if(this->buttons["EXIT_BTN"]->isPressed()){
@@ -154,7 +150,7 @@ void MainMenuState::renderButtons(sf::RenderTarget& target){
 
 void MainMenuState::render(sf::RenderTarget* target){
     if(!target)
-        target = this->window;
+        target = this->mData->window;
 
     target->draw(this->background);
 

@@ -3,10 +3,13 @@
 #include "player.hpp"
 
 class State{
+
 protected:
-    std::stack<State*>* states;
-    sf::RenderWindow* window;
-    std::map<std::string, int>* supportedKeys;
+
+    GameDataRef mData;
+    //std::stack<State*>* states;
+    //sf::RenderWindow* window;
+    //std::map<std::string, int>* supportedKeys;
     std::map<std::string, int> keybinds;
     bool quit; // Whether to quit a state
     bool mPaused;
@@ -28,8 +31,7 @@ public:
     /*
     * Constructor and destructor
     */
-    State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys,
-        std::stack<State*>* states);
+    State(GameDataRef);
     virtual ~State();
 
     // Getters and setters

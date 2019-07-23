@@ -1,8 +1,7 @@
 #include "state.hpp"
 
-State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys,
-            std::stack<State*>* states)
-    : window(window), supportedKeys(supportedKeys), states(states), quit(false),
+State::State(GameDataRef data)
+    : mData(data), quit(false),
     mPaused(false), mKeytime(0.f), mKeytimeMax(10.f)
 {
 
@@ -37,8 +36,8 @@ void State::resumeState(){ this->mPaused = false; }
 void State::updateMousePositions(){
     this->mousePosScreen = sf::Mouse::getPosition();
     this->mousePosWindow = sf::Mouse::getPosition(*this->window);
-    this->mousePosView = this->window->mapPixelToCoords(
-            sf::Mouse::getPosition(*this->window));
+    this->mousePosView = this->mData->window->mapPixelToCoords(
+            sf::Mouse::getPosition(*this->mData->window));
 
 }
 

@@ -21,8 +21,7 @@ private:
     void initPauseMenu();
 
 public:
-    GameState(sf::RenderWindow*, std::map<std::string, int>*,
-        std::stack<State*>*);
+    GameState(GameDataRef);
     virtual ~GameState();
 
     // Functions

@@ -20,13 +20,12 @@ private:
     void initKeybinds();
     void initButtons();
 public:
-    MainMenuState(sf::RenderWindow* window,
-        std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    MainMenuState(GameDataRef);
     virtual ~MainMenuState();
 
     void updateButtons();
-    void updateInput(const float& dt);
-    void update(const float& dt);
+    void updateInput(const float&);
+    void update(const float&);
 
     void renderButtons(sf::RenderTarget&);
     void render(sf::RenderTarget* target = nullptr);
