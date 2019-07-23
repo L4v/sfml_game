@@ -14,8 +14,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/_src/settingsstate.cpp.o"
   "CMakeFiles/engine.dir/_src/state.cpp.o"
   "CMakeFiles/engine.dir/_src/tile.cpp.o"
-  "engine.pdb"
   "engine"
+  "engine.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
