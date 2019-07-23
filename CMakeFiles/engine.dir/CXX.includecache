@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/main.cpp
-game.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/game.hpp
-
-_include/animationcomponent.hpp
+./_include/animationcomponent.hpp
 iostream
 -
 string
@@ -20,51 +16,47 @@ map
 SFML/Graphics.hpp
 -
 
-_include/button.hpp
+./_include/button.hpp
 SFML/Graphics.hpp
 -
 
-_include/editorstate.hpp
+./_include/editorstate.hpp
 state.hpp
-_include/state.hpp
+./_include/state.hpp
 button.hpp
-_include/button.hpp
+./_include/button.hpp
 
-_include/entity.hpp
+./_include/entity.hpp
 movementcomponent.hpp
-_include/movementcomponent.hpp
+./_include/movementcomponent.hpp
 animationcomponent.hpp
-_include/animationcomponent.hpp
+./_include/animationcomponent.hpp
 hitboxcomponent.hpp
-_include/hitboxcomponent.hpp
+./_include/hitboxcomponent.hpp
 
-_include/game.hpp
-mainmenustate.hpp
-_include/mainmenustate.hpp
-
-_include/gamestate.hpp
+./_include/gamestate.hpp
 state.hpp
-_include/state.hpp
+./_include/state.hpp
 pausemenu.hpp
-_include/pausemenu.hpp
+./_include/pausemenu.hpp
 
-_include/hitboxcomponent.hpp
+./_include/hitboxcomponent.hpp
 iostream
 -
 SFML/Graphics.hpp
 -
 
-_include/mainmenustate.hpp
+./_include/mainmenustate.hpp
 gamestate.hpp
-_include/gamestate.hpp
+./_include/gamestate.hpp
 editorstate.hpp
-_include/editorstate.hpp
+./_include/editorstate.hpp
 button.hpp
-_include/button.hpp
+./_include/button.hpp
 settingsstate.hpp
-_include/settingsstate.hpp
+./_include/settingsstate.hpp
 
-_include/movementcomponent.hpp
+./_include/movementcomponent.hpp
 SFML/Graphics.hpp
 -
 SFML/Window.hpp
@@ -92,25 +84,29 @@ stack
 map
 -
 
-_include/pausemenu.hpp
+./_include/pausemenu.hpp
 map
 -
 SFML/Graphics.hpp
 -
 button.hpp
-_include/button.hpp
+./_include/button.hpp
 
-_include/player.hpp
+./_include/player.hpp
 entity.hpp
-_include/entity.hpp
+./_include/entity.hpp
 
-_include/settingsstate.hpp
+./_include/settingsstate.hpp
 state.hpp
-_include/state.hpp
+./_include/state.hpp
 button.hpp
-_include/button.hpp
+./_include/button.hpp
 
-_include/state.hpp
+./_include/state.hpp
 player.hpp
-_include/player.hpp
+./_include/player.hpp
+
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/mainmenustate.cpp
+mainmenustate.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/mainmenustate.hpp
 
