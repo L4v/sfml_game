@@ -2,6 +2,7 @@
 
 #include "state.hpp"
 #include "pausemenu.hpp"
+#include "player.hpp"
 
 // TODO : STRUCT FOR ALL THE PARAMETERS (window, keys, states)?
 

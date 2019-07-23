@@ -9,7 +9,6 @@
 - Make Button (GUI maybe?) wrapper / handler
 - Make States handler, easily push / pop states from state stack
 - Input handler
-- Game struct for the handlers, window, state pointers and such?
 - Physics component via RK4?
 - Make animation timer prettier
 - Rename member variables to differentiate from others, start with "m"?
@@ -18,3 +17,7 @@
 - Tidy up header files
 - Use Box2D for collision stuff
 - Put some "basic" parameters in a config file, so there's no need to recompile
+
+## Completed TODO stuff
+
+- KINDA : Game struct for the handlers, window, state pointers and such?

@@ -31,7 +31,7 @@ void MainMenuState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->mData->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys.at(key2);
     }
 
     ifs.close();
@@ -112,18 +112,17 @@ void MainMenuState::updateButtons(){
     // New Game
     if(this->buttons["GAME_STATE_BTN"]->isPressed()){
         // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
-        this->mData->states->push(new GameState(this->mData));
+        this->mData->states.push(new GameState(this->mData));
     }
 
     // Settings
     if(this->buttons["SETTINGS_STATE_BTN"]->isPressed()){
-        // TODO : MAKE IT CLEANER, STATE MANAGER/HANDLER CLASS ?
-        this->mData->states->push(new SettingsState(this->mData));
+        this->mData->states.push(new SettingsState(this->mData));
     }
 
     // Editor
     if(this->buttons["EDITOR_STATE_BTN"]->isPressed())
-        this->states->push(new EditorState(this->mData));
+        this->mData->states.push(new EditorState(this->mData));
 
     // Quit
     if(this->buttons["EXIT_BTN"]->isPressed()){

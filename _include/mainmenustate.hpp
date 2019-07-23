@@ -4,6 +4,9 @@
 #include "editorstate.hpp"
 #include "button.hpp"
 #include "settingsstate.hpp"
+#include "state.hpp"
+
+#include <SFML/Graphics.hpp>
 
 class MainMenuState : public State{
 private:

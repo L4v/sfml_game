@@ -11,7 +11,7 @@ void GameState::initKeybinds(){
         std::string key2 = "";
 
         while(ifs >> key >> key2)
-            this->keybinds[key] = this->mData->supportedKeys->at(key2);
+            this->keybinds[key] = this->mData->supportedKeys.at(key2);
     }
 
     ifs.close();

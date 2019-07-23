@@ -1,16 +1,22 @@
 #pragma once
 
-#include "mainmenustate.hpp"
 #include <memory>
+#include <map>
+#include <stack>
+#include <sstream>
+#include <fstream>
+#include <SFML/Graphics.hpp>
 
+class MainMenuState;
+class State;
 
 /*
 * Data containing info about the window, state stack, keys, etc..
 */
 struct GameData{
     sf::RenderWindow* window;
-    std::map<std::string, int>* supportedKeys;
-    std::stack<State*>* states;
+    std::map<std::string, int> supportedKeys;
+    std::stack<State*> states;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;

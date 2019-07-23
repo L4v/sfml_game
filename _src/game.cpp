@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "mainmenustate.hpp"
 
 void Game::initVariables(){
     //this->window = NULL;
@@ -51,7 +52,7 @@ void Game::initWindow(){
 }
 
 void Game::initStates(){
-    this->mData->states.push(new MainMenuState(this->mData);
+    this->mData->states.push(new MainMenuState(this->mData));
 }
 
 void Game::initKeys(){

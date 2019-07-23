@@ -8,18 +8,9 @@ CMakeFiles/engine.dir/_src/button.cpp.o
  ./_include/button.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/button.cpp
 CMakeFiles/engine.dir/_src/editorstate.cpp.o
- ./_include/animationcomponent.hpp
  ./_include/button.hpp
  ./_include/editorstate.hpp
- ./_include/entity.hpp
  ./_include/game.hpp
- ./_include/gamestate.hpp
- ./_include/hitboxcomponent.hpp
- ./_include/mainmenustate.hpp
- ./_include/movementcomponent.hpp
- ./_include/pausemenu.hpp
- ./_include/player.hpp
- ./_include/settingsstate.hpp
  ./_include/state.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/editorstate.cpp
 CMakeFiles/engine.dir/_src/entity.cpp.o
@@ -46,35 +37,20 @@ CMakeFiles/engine.dir/_src/game.cpp.o
 CMakeFiles/engine.dir/_src/gamestate.cpp.o
  ./_include/animationcomponent.hpp
  ./_include/button.hpp
- ./_include/editorstate.hpp
  ./_include/entity.hpp
  ./_include/game.hpp
  ./_include/gamestate.hpp
  ./_include/hitboxcomponent.hpp
- ./_include/mainmenustate.hpp
  ./_include/movementcomponent.hpp
  ./_include/pausemenu.hpp
  ./_include/player.hpp
- ./_include/settingsstate.hpp
  ./_include/state.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/gamestate.cpp
 CMakeFiles/engine.dir/_src/hitboxcomponent.cpp.o
  ./_include/hitboxcomponent.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/hitboxcomponent.cpp
 CMakeFiles/engine.dir/_src/main.cpp.o
- ./_include/animationcomponent.hpp
- ./_include/button.hpp
- ./_include/editorstate.hpp
- ./_include/entity.hpp
  ./_include/game.hpp
- ./_include/gamestate.hpp
- ./_include/hitboxcomponent.hpp
- ./_include/mainmenustate.hpp
- ./_include/movementcomponent.hpp
- ./_include/pausemenu.hpp
- ./_include/player.hpp
- ./_include/settingsstate.hpp
- ./_include/state.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/main.cpp
 CMakeFiles/engine.dir/_src/mainmenustate.cpp.o
  ./_include/animationcomponent.hpp
@@ -106,33 +82,13 @@ CMakeFiles/engine.dir/_src/player.cpp.o
  ./_include/player.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/player.cpp
 CMakeFiles/engine.dir/_src/settingsstate.cpp.o
- ./_include/animationcomponent.hpp
  ./_include/button.hpp
- ./_include/editorstate.hpp
- ./_include/entity.hpp
  ./_include/game.hpp
- ./_include/gamestate.hpp
- ./_include/hitboxcomponent.hpp
- ./_include/mainmenustate.hpp
- ./_include/movementcomponent.hpp
- ./_include/pausemenu.hpp
- ./_include/player.hpp
  ./_include/settingsstate.hpp
  ./_include/state.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/settingsstate.cpp
 CMakeFiles/engine.dir/_src/state.cpp.o
- ./_include/animationcomponent.hpp
- ./_include/button.hpp
- ./_include/editorstate.hpp
- ./_include/entity.hpp
  ./_include/game.hpp
- ./_include/gamestate.hpp
- ./_include/hitboxcomponent.hpp
- ./_include/mainmenustate.hpp
- ./_include/movementcomponent.hpp
- ./_include/pausemenu.hpp
- ./_include/player.hpp
- ./_include/settingsstate.hpp
  ./_include/state.hpp
  /home/jigsaw/workspace/cpp/games/sfml_game/_src/state.cpp
 CMakeFiles/engine.dir/_src/tile.cpp.o

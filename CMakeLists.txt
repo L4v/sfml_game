@@ -5,7 +5,6 @@ include_directories("./_include")
 
 set(EXECUTABLE_NAME "engine")
 
-
 file(GLOB HEADERS "./_include/*.hpp")
 file(GLOB SOURCES "./_src/*.cpp")
 add_executable(${EXECUTABLE_NAME} ${HEADERS} ${SOURCES})

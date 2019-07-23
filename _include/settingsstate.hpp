@@ -3,6 +3,8 @@
 
 #include "state.hpp"
 #include "button.hpp"
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 class SettingsState : public State{
 private:

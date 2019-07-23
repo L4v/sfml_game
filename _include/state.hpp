@@ -1,6 +1,7 @@
 #pragma once
 
-#include "player.hpp"
+#include "game.hpp"
+#include <SFML/System.hpp>
 
 class State{
 

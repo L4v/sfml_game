@@ -35,7 +35,7 @@ void State::resumeState(){ this->mPaused = false; }
 
 void State::updateMousePositions(){
     this->mousePosScreen = sf::Mouse::getPosition();
-    this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+    this->mousePosWindow = sf::Mouse::getPosition(*this->mData->window);
     this->mousePosView = this->mData->window->mapPixelToCoords(
             sf::Mouse::getPosition(*this->mData->window));
 
