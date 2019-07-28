@@ -105,6 +105,7 @@ void GameState::render(sf::RenderTarget* target){
     if(!target)
         target = this->mData->window;
 
+    this->mTilemap.render(*target);
     this->player->render(*target);
     // Pause menu render
     if(this->mPaused){

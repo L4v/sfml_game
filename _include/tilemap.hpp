@@ -5,17 +5,16 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-struct Tile{
-    int mId;
-    sf::IntRect mRect;
-    sf::Sprite mSprite;
-};
 
 class Tilemap{
 private:
-    sf::Texture& mAtlas; // Tile atlas, main texture for all the tiles
-    std::vector<Tile> mTiles;
-    int mWidth, mHeight; // Width and height of the atlas
+    // TEST
+    std::vector<sf::Sprite> mSprites;
+
+    sf::Texture mAtlas; // Tile atlas, main texture for all the tiles
+    std::vector<int> mTiles; // Contains tile ids
+    int mWidth; // How many tiles in width
+    int mHeight; // How many tiles in height
     int mTileSize; // The size of one side of the tile square
 
 public:
@@ -26,7 +25,7 @@ public:
     virtual ~Tilemap();
 
     void update(const float& dt);
-    void render(sf::RenderTarget);
+    void render(sf::RenderTarget&);
 };
 
 #endif

@@ -1,5 +1,7 @@
 ## TODO List
 
+- Substitute Tilemap for Level class?
+- Camera with sf::View
 - Make Log
 - Events ?
 - Layers ?

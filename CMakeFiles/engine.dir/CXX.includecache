@@ -6,65 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/animationcomponent.cpp
-animationcomponent.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/animationcomponent.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/button.cpp
-button.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/button.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/editorstate.cpp
-editorstate.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/editorstate.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/entity.cpp
-entity.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/entity.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/game.cpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/game.cpp
 game.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/game.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/game.hpp
 mainmenustate.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/mainmenustate.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/mainmenustate.hpp
 
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/gamestate.cpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/gamestate.cpp
 gamestate.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/gamestate.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/gamestate.hpp
 
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/hitboxcomponent.cpp
-hitboxcomponent.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/hitboxcomponent.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/main.cpp
-game.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/game.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/mainmenustate.cpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/mainmenustate.cpp
 mainmenustate.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/mainmenustate.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/mainmenustate.hpp
 
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/movementcomponent.cpp
-movementcomponent.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/movementcomponent.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/pausemenu.cpp
-pausemenu.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/pausemenu.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/player.cpp
-player.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/player.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/settingsstate.cpp
-settingsstate.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/settingsstate.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/state.cpp
-state.hpp
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/state.hpp
-
-/home/hk-47/workspace/op/cpp/games/sfml_game/_src/tile.cpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/tilemap.cpp
+tilemap.hpp
+/home/jigsaw/workspace/cpp/games/sfml_game/_src/tilemap.hpp
 
 _include/animationcomponent.hpp
 iostream
@@ -115,6 +73,8 @@ pausemenu.hpp
 _include/pausemenu.hpp
 player.hpp
 _include/player.hpp
+tilemap.hpp
+_include/tilemap.hpp
 
 _include/hitboxcomponent.hpp
 iostream
@@ -190,5 +150,13 @@ _include/state.hpp
 game.hpp
 _include/game.hpp
 SFML/System.hpp
+-
+
+_include/tilemap.hpp
+map
+-
+vector
+-
+SFML/Graphics.hpp
 -
 

@@ -4,10 +4,16 @@
 #include "pausemenu.hpp"
 #include "player.hpp"
 
+// TEST
+#include "tilemap.hpp"
+
 // TODO : STRUCT FOR ALL THE PARAMETERS (window, keys, states)?
 
 class GameState : public State{
 private:
+    // TEST
+    Tilemap mTilemap;
+
     sf::Font mFont;
     PauseMenu* mPmenu;
 

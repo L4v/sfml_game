@@ -13,7 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/_src/player.cpp.o"
   "CMakeFiles/engine.dir/_src/settingsstate.cpp.o"
   "CMakeFiles/engine.dir/_src/state.cpp.o"
-  "CMakeFiles/engine.dir/_src/tile.cpp.o"
+  "CMakeFiles/engine.dir/_src/tilemap.cpp.o"
   "engine"
   "engine.pdb"
 )
