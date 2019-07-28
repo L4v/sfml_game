@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/_src/game.cpp.o"
   "CMakeFiles/engine.dir/_src/gamestate.cpp.o"
   "CMakeFiles/engine.dir/_src/hitboxcomponent.cpp.o"
+  "CMakeFiles/engine.dir/_src/level.cpp.o"
   "CMakeFiles/engine.dir/_src/main.cpp.o"
   "CMakeFiles/engine.dir/_src/mainmenustate.cpp.o"
   "CMakeFiles/engine.dir/_src/movementcomponent.cpp.o"
@@ -13,7 +14,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/_src/player.cpp.o"
   "CMakeFiles/engine.dir/_src/settingsstate.cpp.o"
   "CMakeFiles/engine.dir/_src/state.cpp.o"
-  "CMakeFiles/engine.dir/_src/tilemap.cpp.o"
   "engine"
   "engine.pdb"
 )

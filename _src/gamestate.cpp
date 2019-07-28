@@ -94,6 +94,7 @@ void GameState::update(const float& dt){
 
         this->updatePlayerInput(dt); // Needs to work in paused
         this->player->update(dt);
+        this->mLevel.update(dt);
     }else{
         // Paused updates
 
@@ -105,7 +106,7 @@ void GameState::render(sf::RenderTarget* target){
     if(!target)
         target = this->mData->window;
 
-    this->mTilemap.render(*target);
+    this->mLevel.render(*target);
     this->player->render(*target);
     // Pause menu render
     if(this->mPaused){

@@ -5,14 +5,14 @@
 #include "player.hpp"
 
 // TEST
-#include "tilemap.hpp"
+#include "level.hpp"
 
 // TODO : STRUCT FOR ALL THE PARAMETERS (window, keys, states)?
 
 class GameState : public State{
 private:
     // TEST
-    Tilemap mTilemap;
+    Level mLevel;
 
     sf::Font mFont;
     PauseMenu* mPmenu;

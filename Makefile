@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jigsaw/workspace/cpp/games/sfml_game
+CMAKE_SOURCE_DIR = /home/hk-47/workspace/op/cpp/games/sfml_game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jigsaw/workspace/cpp/games/sfml_game
+CMAKE_BINARY_DIR = /home/hk-47/workspace/op/cpp/games/sfml_game
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jigsaw/workspace/cpp/games/sfml_game/CMakeFiles /home/jigsaw/workspace/cpp/games/sfml_game/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hk-47/workspace/op/cpp/games/sfml_game/CMakeFiles /home/hk-47/workspace/op/cpp/games/sfml_game/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jigsaw/workspace/cpp/games/sfml_game/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hk-47/workspace/op/cpp/games/sfml_game/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -312,6 +312,33 @@ _src/hitboxcomponent.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/hitboxcomponent.cpp.s
 .PHONY : _src/hitboxcomponent.cpp.s
 
+_src/level.o: _src/level.cpp.o
+
+.PHONY : _src/level.o
+
+# target to build an object file
+_src/level.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/level.cpp.o
+.PHONY : _src/level.cpp.o
+
+_src/level.i: _src/level.cpp.i
+
+.PHONY : _src/level.i
+
+# target to preprocess a source file
+_src/level.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/level.cpp.i
+.PHONY : _src/level.cpp.i
+
+_src/level.s: _src/level.cpp.s
+
+.PHONY : _src/level.s
+
+# target to generate assembly for a file
+_src/level.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/level.cpp.s
+.PHONY : _src/level.cpp.s
+
 _src/main.o: _src/main.cpp.o
 
 .PHONY : _src/main.o
@@ -501,33 +528,6 @@ _src/state.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/state.cpp.s
 .PHONY : _src/state.cpp.s
 
-_src/tilemap.o: _src/tilemap.cpp.o
-
-.PHONY : _src/tilemap.o
-
-# target to build an object file
-_src/tilemap.cpp.o:
-	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/tilemap.cpp.o
-.PHONY : _src/tilemap.cpp.o
-
-_src/tilemap.i: _src/tilemap.cpp.i
-
-.PHONY : _src/tilemap.i
-
-# target to preprocess a source file
-_src/tilemap.cpp.i:
-	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/tilemap.cpp.i
-.PHONY : _src/tilemap.cpp.i
-
-_src/tilemap.s: _src/tilemap.cpp.s
-
-.PHONY : _src/tilemap.s
-
-# target to generate assembly for a file
-_src/tilemap.cpp.s:
-	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/_src/tilemap.cpp.s
-.PHONY : _src/tilemap.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -558,6 +558,9 @@ help:
 	@echo "... _src/hitboxcomponent.o"
 	@echo "... _src/hitboxcomponent.i"
 	@echo "... _src/hitboxcomponent.s"
+	@echo "... _src/level.o"
+	@echo "... _src/level.i"
+	@echo "... _src/level.s"
 	@echo "... _src/main.o"
 	@echo "... _src/main.i"
 	@echo "... _src/main.s"
@@ -579,9 +582,6 @@ help:
 	@echo "... _src/state.o"
 	@echo "... _src/state.i"
 	@echo "... _src/state.s"
-	@echo "... _src/tilemap.o"
-	@echo "... _src/tilemap.i"
-	@echo "... _src/tilemap.s"
 .PHONY : help
 
 

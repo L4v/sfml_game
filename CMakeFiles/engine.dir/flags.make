@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/jigsaw/workspace/cpp/games/sfml_game/./_include 
+CXX_INCLUDES = -I/home/hk-47/workspace/op/cpp/games/sfml_game/./_include 
 
