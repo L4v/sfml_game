@@ -17,6 +17,7 @@
 - Tidy up header files
 - Use Box2D for collision stuff
 - Put some "basic" parameters in a config file, so there's no need to recompile
+- File loader handler thing
 
 ## Completed TODO stuff
 
