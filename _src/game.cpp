@@ -2,7 +2,6 @@
 #include "mainmenustate.hpp"
 
 void Game::initVariables(){
-    //this->window = NULL;
     this->mData->window = NULL;
     this->fullscreen = false;
     this->dt = 0.f;
