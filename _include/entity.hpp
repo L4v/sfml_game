@@ -10,13 +10,13 @@ private:
     void initVariables();
 
 protected:
-    sf::Sprite sprite;
 
     MovementComponent* movementComponent;
     AnimationComponent* animationComponent;
     HitboxComponent* hitboxComponent;
 
 public:
+    sf::Sprite sprite;
     Entity();
     virtual ~Entity();
 

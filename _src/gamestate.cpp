@@ -89,12 +89,18 @@ void GameState::update(const float& dt){
     this->updateKeytime(dt);
     this->updateInput(dt);
 
+    if(this->player->sprite.getPosition().x < 0.f){
+        sf::View view = this->mData->window->getView();
+        view.move(1.f, 0.f);
+        this->mData->window->setView(view);
+    }
+
     if(!this->mPaused){
         // Unpaused updates
 
         this->updatePlayerInput(dt); // Needs to work in paused
         this->player->update(dt);
-        this->mLevel.update(dt);
+        this->mLevel0.update(dt);
     }else{
         // Paused updates
 
@@ -106,7 +112,7 @@ void GameState::render(sf::RenderTarget* target){
     if(!target)
         target = this->mData->window;
 
-    this->mLevel.render(*target);
+    this->mLevel0.render(*target);
     this->player->render(*target);
     // Pause menu render
     if(this->mPaused){

@@ -12,7 +12,7 @@
 class GameState : public State{
 private:
     // TEST
-    Level mLevel;
+    Level mLevel0;
 
     sf::Font mFont;
     PauseMenu* mPmenu;
