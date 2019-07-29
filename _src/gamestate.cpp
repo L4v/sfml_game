@@ -26,7 +26,8 @@ void GameState::initTextures(){
 }
 
 void GameState::initPlayers(){
-    this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
+    sf::Vector2i tmp = this->mLevel0.getSpawnPoint();
+    this->player = new Player(tmp.x, tmp.y, this->textures["PLAYER_SHEET"]);
 }
 
 void GameState::initFonts(){
@@ -43,6 +44,7 @@ void GameState::initPauseMenu(){
 GameState::GameState(GameDataRef data) :
     State(data)
 {
+
     this->initKeybinds();
     this->initFonts();
     this->initTextures();
@@ -88,12 +90,6 @@ void GameState::update(const float& dt){
     this->updateMousePositions(); // Needs to work in paused
     this->updateKeytime(dt);
     this->updateInput(dt);
-
-    if(this->player->sprite.getPosition().x < 0.f){
-        sf::View view = this->mData->window->getView();
-        view.move(1.f, 0.f);
-        this->mData->window->setView(view);
-    }
 
     if(!this->mPaused){
         // Unpaused updates

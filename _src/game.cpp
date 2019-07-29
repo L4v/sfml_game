@@ -49,8 +49,8 @@ void Game::initWindow(){
     this->mData->window->setFramerateLimit(framerate_limit);
     this->mData->window->setVerticalSyncEnabled(vertical_sync_enabled);
 
-    sf::View view(sf::FloatRect(0.f, 0.f, window_bounds.width, window_bounds.height));
-    this->mData->window->setView(view);
+    // sf::View view(sf::FloatRect(0.f, 0.f, window_bounds.width, window_bounds.height));
+    // this->mData->window->setView(view);
 }
 
 void Game::initStates(){
